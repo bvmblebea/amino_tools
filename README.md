@@ -1,5 +1,5 @@
 # Amino-Tools
-Amino-Tools this is a tools,scripts for amino/Это сборник скриптов для Amino
+Amino-Tools this is a tools,scripts for amino/Это сборник скриптов для Amino!
 # Termux
 - apt update
 - apt upgrade
