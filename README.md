@@ -3,6 +3,7 @@ Amino-Tools this is a tools,scripts for amino/Это сборник скрипт
 # Termux
 - apt update
 - apt upgrade
+- pkg install python
 - pip install colorama
 - pip install amino.py
 - apt install git
