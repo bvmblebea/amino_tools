@@ -1,0 +1,8 @@
+amino.py
+pyfiglet
+stdiomask
+progress
+colorama
+secmail
+beautifulsoup4
+nickname-generator
