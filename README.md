@@ -4,8 +4,7 @@ Amino-Tools this is a tools,scripts for amino/Это сборник скрипт
 - apt update
 - apt upgrade
 - pkg install python
-- pip install colorama
-- pip install amino.py
+- pip install -r requirements.txt
 - apt install git
 - git clone https://github.com/LilZevi/Amino-Tools
 - Для запуска/For starting
