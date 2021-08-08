@@ -1,18 +1,17 @@
 # -*- coding: utf8 -*-
 import pyfiglet
-from aminotoolsconfigs import menuConfigs
-from aminotoolsconfigs import toolsfunctions
-from colorama import init, Fore, Back, Style
-init()
-print(Fore.BLUE + Style.BRIGHT)
+import asyncio
+
+from aminotoolsconfigs import menuConfigs, toolsfunctions
+from colored import fore, back, style, attr
+attr(0)
+print(fore.LIGHT_STEEL_BLUE + style.BOLD)
 print("""Script by Lil Zevi
 Github : https://github.com/LilZevi""")
 print(pyfiglet.figlet_format("Amino", font="cosmic"))
 print(pyfiglet.figlet_format("Tools", font="cosmic"))
-theversion = ("3.9.2")
+theversion = ("4.3.7")
 print(f"version = {theversion}")
-
-
 
 menuConfigs.mainmenu()
 tools = input("Type Number >> ")
@@ -22,16 +21,16 @@ if tools == "1":
 	spamtools = input("Type Number >> ")
 	
 	if spamtools == "1":
-		toolsfunctions.spambot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.spambot())
 
 	elif spamtools == "2":
-		toolsfunctions.wikispambot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.wikispambot())
 
 	elif spamtools == "3":
-		toolsfunctions.wallspambot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.wallspambot())
 
 	elif spamtools == "4":
-		toolsfunctions.blogspambot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.blogspambot())
 
 	elif spamtools == "0":
 		toolsfunctions.scriptexit()
@@ -43,16 +42,16 @@ elif tools == "2":
 	chattools = input("Type Number >> ")
 	
 	if chattools == "1":
-		toolsfunctions.chatidfinder()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.chatidfinder())
 
 	elif chattools == "2":
-		toolsfunctions.chatsecurity()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.chatsecurity())
 
 	elif chattools == "3":
-		toolsfunctions.cohostkick()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.cohostkick())
 
 	elif chattools == "4":
-		toolsfunctions.fakecointransaction()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.fakecointransaction())
 
 	elif chattools == "0":
 		toolsfunctions.scriptexit()
@@ -64,16 +63,16 @@ elif tools == "3":
 	activitytools = input("Type Number >> ")
 
 	if activitytools == "1":
-		toolsfunctions.invitebot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.invitebot())
 					
 	elif activitytools == "2":
-		toolsfunctions.likebot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.likebot())
 
 	elif activitytools == "3":
-		toolsfunctions.followbot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.followbot())
 	
 	elif activitytools == "4":
-		toolsfunctions.unfollowbot()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.unfollowbot())
 
 	elif activitytools == "0":
 		toolsfunctions.scriptexit()
@@ -84,13 +83,13 @@ elif tools == "4":
 	profiletools = input("Type Number >> ")
 
 	if profiletools == "1":
-		toolsfunctions.antiban()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.antiban())
 
 	elif profiletools == "2":
-		toolsfunctions.postspam()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.postspam())
 
 	elif profiletools == "3":
-		toolsfunctions.wikispam()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.wikispam())
 
 	elif profiletools == "0":
 		toolsfunctions.scriptexit()
@@ -101,47 +100,24 @@ elif tools == "5":
 	raidtools = input("Type Number >> ")
 
 	if raidtools == "1":
-		toolsfunctions.sysmessagespam()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.sysmessagespam())
 			
 	elif raidtools == "2":
-		toolsfunctions.sysmessagesend()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.sysmessagesend())
 		
 	elif raidtools == "3":
-		toolsfunctions.joinleavespam()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.joinleavespam())
 
 	elif raidtools == "4":
-		toolsfunctions.chatcrash()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.iprecipient())
 
 	elif raidtools == "5":
-		toolsfunctions.iprecipient()
-
-	elif raidtools == "6":
-		toolsfunctions.theaminoadvbo()
-
-	elif raidtools == "7":
-		toolsfunctions.joinactivechats()
-	
-	elif raidtools == "8":
-		toolsfunctions.autoregister()
+		asyncio.get_event_loop().run_until_complete(toolsfunctions.joinactivechats())
 		
 	elif raidtools == "0":
 		toolsfunctions.scriptexit()
 		exit()
 
-elif tools == "6":
-	menuConfigs.dontclickmenu()
-	dontclickselect = input("Type Number >> ")
-
-	if dontclickselect == "1":
-		generatingnumber = int(input("How Much DeviceId Generate: "))
-
-		toolsfunctions.deviceIdgeneratingproccess()
-		print(f"\nGenerated {generatingnumber} deviceids")
-
-	elif dontclickselect == "2":
-		toolsfunctions.thecoingenerator()
-
-		
 if tools == "0":
 	toolsfunctions.scriptexit()
 	exit()
