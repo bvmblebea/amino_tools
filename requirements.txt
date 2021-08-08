@@ -1,8 +1,5 @@
-amino.py==1.2.17
+amino.py
 pyfiglet
 stdiomask
-progress
-colorama
-secmail
-beautifulsoup4
-nickname-generator
+colored
+terminal-banner
