@@ -10,7 +10,7 @@ print("""Script by Lil Zevi
 Github : https://github.com/LilZevi""")
 print(pyfiglet.figlet_format("Amino", font="cosmic"))
 print(pyfiglet.figlet_format("Tools", font="cosmic"))
-theversion = ("4.3.7")
+theversion = ("4.4.2")
 print(f"version = {theversion}")
 
 menuConfigs.mainmenu()
