@@ -1,13 +1,13 @@
 # Amino-Tools
-Amino-Tools this is a tools,scripts for amino/Это сборник скриптов для Amino!
+Amino-Tools this is a collection of scripts for https://aminoapps.com
 
 # Termux
 - apt update
 - apt upgrade
 - pkg install python
-- pip install -r requirements.txt 
 - apt install git
-- git clone https://github.com/LilZevi/Amino-Tools
+- git clone https://github.com/deluvsushi/Amino-Tools
 - Для запуска|For starting
 - cd Amino-Tools
+- pip install -r requirements.txt 
 - python Amino-Tools.py
