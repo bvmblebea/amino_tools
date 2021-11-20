@@ -257,7 +257,7 @@ async def send_system_message(message: str):
             print(e)
 
 
-async def join_leave(chat_Id: str):
+async def join_leave(sub_client: aminofix.asyncfix.SubClient, chat_Id: str):
     await sub_client.leave_chat(chatId=chat_Id)
     await sub_client.join_chat(chatId=chat_Id)
 
@@ -267,7 +267,7 @@ async def spam_with_join_leave():
     chat_Id = await chats(sub_client=sub_client)
     while True:
         print(">> Spamming With Join And Leave...")
-        await asyncio.gather(*[asyncio.create_task(join_leave(chat_Id)) for _ in range(500)])
+        await asyncio.gather(*[asyncio.create_task(join_leave(sub_client, chat_Id)) for _ in range(500)])
 
 
 async def ip_recipient():
