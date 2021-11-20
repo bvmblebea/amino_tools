@@ -1,5 +1,4 @@
-amino.py
+amino.fix
 pyfiglet
-stdiomask
-colored
-terminal-banner
+sty
+tabulate
