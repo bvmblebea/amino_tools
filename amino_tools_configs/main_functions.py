@@ -346,7 +346,7 @@ async def main():
             await like_bot()
 
         elif select == "3":
-            await follow_bot
+            await follow_bot()
 
         elif select == "4":
             await unfollow_bot()
