@@ -4,9 +4,9 @@ from . import menu_configs
 from tabulate import tabulate
 client = aminofix.asyncfix.Client()
 
-	
-		# -- auth and other functions --
-		
+# -- auth and other functions --
+
+
 async def auth():
     while True:
         try:
@@ -44,9 +44,8 @@ async def chats(sub_client: aminofix.asyncfix.SubClient):
         return
     except Exception as e:
         print(e)
-	
-		# -- auth and other functions --
 
+        # -- auth and other functions --
 
         # -- spam tools --
 
