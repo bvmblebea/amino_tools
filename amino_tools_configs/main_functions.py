@@ -1,9 +1,9 @@
-import aminofix.asyncfix
+import amino
 from . import menu_configs
 from tabulate import tabulate
 from asyncio import gather, create_task
 
-client = aminofix.asyncfix.Client()
+client = amino.AsyncClient()
 
 		# -- auth and other functions --
 
@@ -20,34 +20,34 @@ async def auth():
 
 
 async def communities():
-    try:
-        clients = await client.sub_clients(start=0, size=100)
-        for x, name in enumerate(clients.name, 1):
-            print(f"-- {x}:{name}")
-        while True:
-            com_id = clients.comId[int(input("-- Select the community::: ")) - 1]
-            return com_id
-    except (ValueError, TypeError):
-        communities()
+	while True:
+		try:
+			clients = await client.sub_clients(start=0, size=100)
+			for x, name in enumerate(clients.name, 1):
+				print(f"-- {x}:{name}")
+			com_id = clients.comId[int(input("-- Select the community::: ")) - 1]
+			return com_id
+		except Exception as e:
+			print(e)
 
 
-async def chats(sub_client: aminofix.asyncfix.SubClient):
-    try:
-        chats = await sub_client.get_chat_threads(size=100)
-        for z, title in enumerate(chats.title, 1):
-            print(f"-- {z}:{title}")
-        while True:
-            chat_id = chats.chatId[int(input("-- Select the chat::: ")) - 1]
-            return chat_id
-    except Exception as e:
-        print(e)
+async def chats(sub_client: amino.AsyncSubClient):
+    while True:
+    	try:
+    		chats = await sub_client.get_chat_threads(size=100)
+    		for z, title in enumerate(chats.title, 1):
+    			print(f"-- {z}:{title}")
+    		chat_id = chats.chatId[int(input("-- Select the chat::: ")) - 1]
+    		return chat_id
+    	except Exception as e:
+    		print(e)
 
         # -- auth and other functions --
 
 
         # -- spam tools --
 
-async def spam_bot(sub_client: aminofix.asyncfix.SubClient):
+async def spam_bot(sub_client: amino.AsyncSubClient):
     chat_id = await chats(sub_client=sub_client)
     message = input("-- Message::: ")
     while True:
@@ -55,7 +55,7 @@ async def spam_bot(sub_client: aminofix.asyncfix.SubClient):
         print("-- Message is sent...")
 
 
-async def wiki_spam_bot(sub_client: aminofix.asyncfix.SubClient):
+async def wiki_spam_bot(sub_client: amino.AsyncSubClient):
     link_info = await client.get_from_code(input("-- Wiki Link::: "))
     wiki_id = link_info.wikiId
     message = input("-- Message::: ")
@@ -64,7 +64,7 @@ async def wiki_spam_bot(sub_client: aminofix.asyncfix.SubClient):
         print("-- Comment is sent...")
 
 
-async def wall_spam_bot(sub_client: aminofix.asyncfix.SubClient):
+async def wall_spam_bot(sub_client: amino.AsyncSubClient):
     link_info = await client.get_from_code(input("-- User Link::: "))
     user_id = link_info.objectId
     message = input("-- Message::: ")
@@ -73,7 +73,7 @@ async def wall_spam_bot(sub_client: aminofix.asyncfix.SubClient):
         print("-- Comment is sent...")
 
 
-async def blog_spam_bot(sub_client: aminofix.asyncfix.SubClient):
+async def blog_spam_bot(sub_client: amino.AsyncSubClient):
     link_info = await client.get_from_code(input("-- Blog Link::: "))
     blog_id = link_info.objectId
     message = input("-- Message::: ")
@@ -86,7 +86,7 @@ async def blog_spam_bot(sub_client: aminofix.asyncfix.SubClient):
 
         # -- chat tools --
 
-async def chat_id_finder(sub_client: aminofix.asyncfix.SubClient):
+async def chat_id_finder(sub_client: amino.AsyncSubClient):
     print(tabulate(menu_configs.chat_id_finder_menu, tablefmt="psql"))
     select = int(input("-- Select::: "))
     if select == 1:
@@ -102,14 +102,14 @@ async def chat_id_finder(sub_client: aminofix.asyncfix.SubClient):
             print(f"-- {title}:{chat_id}")
 
 
-async def crash_chat_description(sub_client: aminofix.asyncfix.SubClient):
+async def crash_chat_description(sub_client: amino.AsyncSubClient):
     link_info = await client.get_from_code(input("-- Chat Link::: "))
     chat_id = link_info.objectId
     content = open("crash_description.txt").read()
     await sub_client.edit_chat(content=content, chatId=chat_id, viewOnly="yes")
 
 
-async def transfer_fake_coins(sub_client: aminofix.asyncfix.SubClient):
+async def transfer_fake_coins(sub_client: amino.AsyncSubClient):
     chat_id = await chats(sub_client=sub_client)
     coins = int(input("-- How many fake coins?(min - 1/max - 500)::: "))
     await sub_client.send_coins(chatId=chat_id, coins=1)
@@ -122,7 +122,7 @@ async def transfer_fake_coins(sub_client: aminofix.asyncfix.SubClient):
 
         # -- activity tools --
 
-async def chat_invite_bot(sub_client: aminofix.asyncfix.SubClient):
+async def chat_invite_bot(sub_client: amino.AsyncSubClient):
     chat_id = await chats(sub_client=sub_client)
     print(tabulate(menu_configs.chat_invite_bot_menu, tablefmt="psql"))
     select = int(input("-- Select::: "))
@@ -168,7 +168,7 @@ async def chat_invite_bot(sub_client: aminofix.asyncfix.SubClient):
         await invite_recent_users()
 
 
-async def like_bot(sub_client: aminofix.asyncfix.SubClient):
+async def like_bot(sub_client: amino.AsyncSubClient):
     for i in range(0, 2000, 10000):
         recent_blogs = await sub_client.get_recent_blogs(start=i, size=100).blogId
         for blog_id in recent_blogs:
@@ -176,7 +176,7 @@ async def like_bot(sub_client: aminofix.asyncfix.SubClient):
             print(f"-- Liked::: {blog_id}")
 
 
-async def follow_bot(sub_client: aminofix.asyncfix.SubClient):
+async def follow_bot(sub_client: amino.AsyncSubClient):
     print(tabulate(menu_configs.follow_bot_menu, tablefmt="psql"))
     select = int(input("-- Select::: "))
 
@@ -215,7 +215,7 @@ async def follow_bot(sub_client: aminofix.asyncfix.SubClient):
         print("-- Followed to recent users...")
 
 
-async def unfollow_bot(sub_client: aminofix.asyncfix.SubClient):
+async def unfollow_bot(sub_client: amino.AsyncSubClient):
     while True:
         following_users_count = sub_client.get_user_info(
             userId=sub_client.profile.userId
@@ -239,7 +239,7 @@ async def unfollow_bot(sub_client: aminofix.asyncfix.SubClient):
                 # -- profile tools --
 
 
-async def blogs_spam(sub_client: aminofix.asyncfix.SubClient):
+async def blogs_spam(sub_client: amino.AsyncSubClient):
     title = input("-- Title::: ")
     content = input("-- Content::: ")
     while True:
@@ -249,7 +249,7 @@ async def blogs_spam(sub_client: aminofix.asyncfix.SubClient):
         print("-- Created blog...")
 
 
-async def wikis_spam(sub_client: aminofix.asyncfix.SubClient):
+async def wikis_spam(sub_client: amino.AsyncSubClient):
     title = input("-- Title::: ")
     content = input("-- Content::: ")
     while True:
@@ -263,7 +263,7 @@ async def wikis_spam(sub_client: aminofix.asyncfix.SubClient):
         # -- raid tools __
 
 
-async def spam_system_messages(sub_client: aminofix.asyncfix.SubClient):
+async def spam_system_messages(sub_client: amino.AsyncSubClient):
     chat_id = await chats(sub_client=sub_client)
     message = input("-- Message::: ")
     message_type = int(input("-- Message Type::: "))
@@ -277,7 +277,7 @@ async def spam_system_messages(sub_client: aminofix.asyncfix.SubClient):
         )
 
 
-async def send_system_message(sub_client: aminofix.asyncfix.SubClient):
+async def send_system_message(sub_client: amino.AsyncSubClient):
     chat_id = await chats(sub_client=sub_client)
     message_type = int(input("-- Message Type::: "))
     while True:
@@ -288,12 +288,12 @@ async def send_system_message(sub_client: aminofix.asyncfix.SubClient):
         print("-- Message is sent...")
 
 
-async def join_leave(sub_client: aminofix.asyncfix.SubClient, chat_id: str):
+async def join_leave(sub_client: amino.AsyncSubClient, chat_id: str):
     await sub_client.leave_chat(chatId=chat_id)
     await sub_client.join_chat(chatId=chat_id)
 
 
-async def spam_with_join_leave(sub_client: aminofix.asyncfix.SubClient):
+async def spam_with_join_leave(sub_client: amino.AsyncSubClient):
     chat_id = await chats(sub_client=sub_client)
     while True:
         print("-- spamming with join and leave...")
@@ -302,7 +302,7 @@ async def spam_with_join_leave(sub_client: aminofix.asyncfix.SubClient):
         )
 
 
-async def join_active_chats(sub_client: aminofix.asyncfix.SubClient):
+async def join_active_chats(sub_client: amino.AsyncSubClient):
     public_chats = await sub_client.get_public_chat_threads(size=100).chatId
     print("-- Joining into public chats...")
     await gather(
@@ -316,7 +316,7 @@ async def join_active_chats(sub_client: aminofix.asyncfix.SubClient):
 
 async def main():
     await auth()
-    sub_client = await aminofix.asyncfix.SubClient(
+    sub_client = await amino.AsyncSubClient(
         comId=await communities(), profile=client.profile
     )
     print(tabulate(menu_configs.main_menu, tablefmt="psql"))
@@ -395,6 +395,5 @@ async def main():
 
     elif select == 0:
         exit()
-
 
 			# End...
