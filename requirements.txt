@@ -1,4 +1,3 @@
-amino.fix
-pyfiglet
+amino.py
 sty
 tabulate
