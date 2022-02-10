@@ -4,7 +4,6 @@ from amino_tools_configs import main_functions
 print(f"""{fg(36)}
 Script by deluvsushi
 Github : https://github.com/deluvsushi
-
 ▄▀█ █▀▄▀█ █ █▄░█ █▀█ ▄▄ ▀█▀ █▀█ █▀█ █░░ █▀
 █▀█ █░▀░█ █ █░▀█ █▄█ ░░ ░█░ █▄█ █▄█ █▄▄ ▄█
 """)
