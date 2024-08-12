@@ -1,5 +1,5 @@
-# Amino-Tools
-Amino-Tools this is a collection of scripts for https://aminoapps.com
+# amino_tools
+Collection of scripts for amino
 
 ## Termux
 ```shell
@@ -7,8 +7,8 @@ Amino-Tools this is a collection of scripts for https://aminoapps.com
 - apt upgrade
 - pkg install python
 - apt install git
-- git clone https://github.com/zeviel/Amino-Tools
-- cd Amino-Tools
+- git clone https://github.com/wh9am1/amino_tools
+- cd amino_tools
 - pip install -r requirements.txt 
-- python Amino-Tools.py
+- python amino_tools.py
 ```
