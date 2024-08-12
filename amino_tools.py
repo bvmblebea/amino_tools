@@ -1,6 +1,7 @@
 from sty import fg
 from asyncio import get_event_loop
-from configs import main_functions
+from amino_tools_configs import main_functions
+
 print(f"""{fg(36)}
 ▄▀█ █▀▄▀█ █ █▄░█ █▀█ ▄▄ ▀█▀ █▀█ █▀█ █░░ █▀ Creator: https://github.com/wh9am1
 █▀█ █░▀░█ █ █░▀█ █▄█ ░░ ░█░ █▄█ █▄█ █▄▄ ▄█
